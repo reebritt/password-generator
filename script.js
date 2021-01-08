@@ -2,40 +2,63 @@
 var generateBtn = document.querySelector("#generate");
 
 // define characters , numbers, symbols to use in password generator 
-var charLower = 'abcdefghijklmnopqrstuvwxyz';
-var charUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var num = '0123456789';
-var sym = ' "!#$%&()*+,-./:;<=>?@[\]^_`{|}~';
-var passwordLength;
+var charLower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var charUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var num = ["0","1","2","3","4","5","6","7","8","9"];
+var sym = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
 //setup length for password and do proper checks for length check of 8-128
-function generatePassword() {
-  passwordLength = prompt("To start your password selection, Choose between 8 and 128 characters");
-  // writing psuedo code in prep for changing to logic
-  // num = prompt("Would you like your password to include numbers");
-  // sym = prompt("Would you like your password to include symbols");
-  // char = prompt("Would you like your password to include characters");
 
-  // if num && sym then var finalPasword = num + sym
-  // if sym && char then var finalPassword = sym + char
-  // if num && char then var finalPassword = num + char
-
+function getPasswordOptions(){
+  var passwordLength = parseInt(prompt("To start your password selection, Choose between 8 and 128 characters"));
   if (passwordLength < 8 || passwordLength > 128) {
     alert("Choose between 8 and 128 characters");
-    
-  generatePassword();
-     // else if {num = confirm("Would you like your password to include numbers");
-    //         sym = confirm("Would you like your password to include symbols");
-    //         char = confirm("Would your like your password to include characters");
+  } else {
+  var numPrompt = confirm("Would you like your password to include numbers?");
+  var symPrompt = confirm("Would you like your password to include symbols?");
+  var charPromptUpper = confirm("Would you like to include uppercase characters?");
+  var charPromptLower = confirm("Would you like to include lowercase characters?");
   }
+  var passwordOptions={
+    pwdLength:passwordLength,
+    pwdNum:numPrompt,
+    pwdSym:symPrompt,
+    pwdUpperCase:charPromptUpper,
+    pwdLowerCase:charPromptLower
+  }
+  console.log(passwordOptions)
+  return passwordOptions
+}
+function randomEl(array){
+  var randomIndex=Math.floor(Math.random() * array.length);
+  var randomElement=array[randomIndex]
+  return randomElement
+}
+
+function generatePassword() {
+  var newPassword=[]
+  var passwordOptions=getPasswordOptions()
+ if (passwordOptions.pwdLowerCase) {
+newPassword.push(randomEl(charLower))
+ }
+else {
+  (passwordOptions.pwdUpperCase) {
+    newPassword.push(randomEl(charUpper))
+  } 
+}
+  else {
+    (passwordOptions.pwdUpperCase){
+    newPassword.push(randomEl(symPrompt))
+  }
+}
+else {
+  (passwordOptions.pwdUpperCase){
+    newPassword.push(randomEl(numPrompt))
+}
+  }
+}
 
   var password = "";
-  for (var i = 0; i <= passwordLength; i++) {
-    password = password + charLower.charAt(Math.floor(Math.random() * charLower.length));
-
-  };
-  return password;
-}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -43,7 +66,6 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
