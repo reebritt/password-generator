@@ -4,7 +4,7 @@
 var charLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var charUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var sym = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+var sym = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", " < ", "=", " > ", " ? ", "@", "[", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
 // Add event listener to generate button
 var generateBtn = document.querySelector("#generate");
@@ -45,18 +45,18 @@ function generatePassword() {
   else if (passwordOptions.pwdUpperCase) {
     newPassword.push(randomEl(charUpper))
   }
-  
+
   else if (passwordOptions.pwdSym) {
     newPassword.push(randomEl(sym))
   }
- 
+
   else if (passwordOptions.pwdNum) {
     newPassword.push(randomEl(num))
   };
   console.log(passwordOptions)
   //newPassword =newPassword.toString();
   for (var i = 0; i < getPasswordOptions.pwdLength; i++) {
-   randomPassword = randomEL(newPassword)
+    randomPassword = randomEL(newPassword)
   }
   return randomPassword
 }
@@ -77,4 +77,3 @@ function writePassword() {
   passwordText.textContent = password;
 
 }
-
