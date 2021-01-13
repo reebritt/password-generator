@@ -34,46 +34,51 @@ function getPasswordOptions() {
   return passwordOptions
 }
 
-var newPassword;
+//function randomEl(array) {
+//  var randomIndex = Math.floor(Math.random() * array.length);
+//  var randomElement = array[randomIndex]
+//  return randomElement
+//  //console.log(randomElement)
+//}
 function generatePassword() {
-  var randomPassword
-  newPassword = []
+ // var randomPassword = []
+  var newPassword = []
   var passwordOptions = getPasswordOptions()
   if (passwordOptions.pwdLowerCase) {
-    newPassword.push(randomEl(charLower))
+    newPassword=newPassword.concat(charLower)
   }
-  else if (passwordOptions.pwdUpperCase) {
-    newPassword.push(randomEl(charUpper))
-  }
-
-  else if (passwordOptions.pwdSym) {
-    newPassword.push(randomEl(sym))
+  if (passwordOptions.pwdUpperCase) {
+    newPassword=newPassword.concat(charUpper)
   }
 
-  else if (passwordOptions.pwdNum) {
-    newPassword.push(randomEl(num))
+  if (passwordOptions.pwdSym) {
+    newPassword=newPassword.concat(sym)
+  }
+
+  if (passwordOptions.pwdNum) {
+    newPassword=newPassword.concat(num)
   };
-  console.log(passwordOptions)
+ 
   //newPassword =newPassword.toString();
-  for (var i = 0; i < getPasswordOptions.pwdLength; i++) {
-    randomPassword = randomEL(newPassword)
+  for (var i = 0; i < passwordOptions.pwdLength; i++) {
+   //var randomPassword=newPassword[Math.floor(Math.random()* newPassword.length)]
+  console.log("test")
+   // var newPassword=randomEl(newPassword)
+  //  randomPassword.push(newPassword)
   }
+  
+  console.log(passwordOptions.pwdLength)
+
   return randomPassword
 }
 
-function randomEl(array) {
-  var randomIndex = Math.floor(Math.random() * array.length);
-  var randomElement = array[randomIndex]
-  return randomElement
-  //console.log(randomElement)
-}
 
-var password = "";
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   console.log(password)
-  passwordText.textContent = password;
+  passwordText.value = password;
+
 
 }
