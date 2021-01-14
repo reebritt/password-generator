@@ -8,10 +8,6 @@ var sym = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/",
 
 // Add event listener to generate button
 var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", writePassword);
-// ps = writePassword();
-// document.getElementById("password").placeholder =ps;
-
 
 //setup length for password and do proper checks for length check of 8-128
 function getPasswordOptions() {
@@ -31,45 +27,58 @@ function getPasswordOptions() {
     pwdUpperCase: charPromptUpper,
     pwdLowerCase: charPromptLower
   }
+  console.log(passwordOptions)
   return passwordOptions
 }
 
-//function randomEl(array) {
-//  var randomIndex = Math.floor(Math.random() * array.length);
-//  var randomElement = array[randomIndex]
-//  return randomElement
-//  //console.log(randomElement)
-//}
+function randomEl(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex]
+  return randomElement
+  
+};
 function generatePassword() {
- // var randomPassword = []
+ 
   var newPassword = []
+  var possibleCharacters = []
+  var guaranteedCharacters = []
   var passwordOptions = getPasswordOptions()
+
   if (passwordOptions.pwdLowerCase) {
-    newPassword=newPassword.concat(charLower)
+    possibleCharacters = possibleCharacters.concat(charLower)
+    guaranteedCharacters.push(randomEl(charLower))
   }
+
   if (passwordOptions.pwdUpperCase) {
-    newPassword=newPassword.concat(charUpper)
+    possibleCharacters = possibleCharacters.concat(charUpper)
+    guaranteedCharacters.push(randomEl(charUpper))
   }
 
   if (passwordOptions.pwdSym) {
-    newPassword=newPassword.concat(sym)
+
+    possibleCharacters = possibleCharacters.concat(sym)
+    guaranteedCharacters.push(randomEl(sym))
   }
 
   if (passwordOptions.pwdNum) {
-    newPassword=newPassword.concat(num)
-  };
- 
-  //newPassword =newPassword.toString();
-  for (var i = 0; i < passwordOptions.pwdLength; i++) {
-   //var randomPassword=newPassword[Math.floor(Math.random()* newPassword.length)]
-  console.log("test")
-   // var newPassword=randomEl(newPassword)
-  //  randomPassword.push(newPassword)
-  }
-  
-  console.log(passwordOptions.pwdLength)
 
-  return randomPassword
+    possibleCharacters = possibleCharacters.concat(num)
+    guaranteedCharacters.push(randomEl(num))
+  };
+
+  
+  for (var i = 0; i < passwordOptions.pwdLength; i++) {
+    var possibleCharacter = randomEl(possibleCharacters)
+    newPassword.push(possibleCharacter)
+
+  }
+
+  for (var i = 0; i < guaranteedCharacters.length; i++) {
+    newPassword[i] = guaranteedCharacters[i];
+
+  }
+
+  return newPassword.join("")
 }
 
 
@@ -82,3 +91,4 @@ function writePassword() {
 
 
 }
+generateBtn.addEventListener("click", writePassword);
