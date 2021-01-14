@@ -26,12 +26,12 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 
-4.src="./Assets/Prompt1"
-src="./Assets/Prompt2"
-src="./Assets/Prompt3"
-src="./Assets/Prompt4"
-src="./Assets/Prompt5"
+4.
+ <img src="./Assets/Prompt1">
+<img src="./Assets/Prompt2">
+<img src="./Assets/Prompt3">
+<img src="./Assets/Prompt4">
+<img src="./Assets/Prompt5">
+<img src=".Assets/password">
 
 file:///Users/shereebritt/Desktop/Homework/homework3/password-generator/index.html
-Issues
-Could not get the password to return in the box. My original code of one prompt worked and after passing in all the prompts I could not resolve. 
