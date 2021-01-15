@@ -32,6 +32,6 @@ THEN the password is either displayed in an alert or written to the page
 <img src="./Assets/Prompt3.png">
 <img src="./Assets/Prompt4.png">
 <img src="./Assets/Prompt5.png">
-<img src=".Assets/password.png">
+<img src="./Assets/password.png">
 
 file:///Users/shereebritt/Desktop/Homework/homework3/password-generator/index.html

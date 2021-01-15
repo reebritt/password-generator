@@ -19,6 +19,9 @@ function getPasswordOptions() {
     var symPrompt = confirm("Would you like your password to include symbols?");
     var charPromptUpper = confirm("Would you like to include uppercase characters?");
     var charPromptLower = confirm("Would you like to include lowercase characters?");
+    if (!numPrompt && !symPrompt && !charPromptUpper && !charPromptLower) {
+      alert("You must choose at least one");
+    }
   }
   var passwordOptions = {
     pwdLength: passwordLength,
@@ -35,10 +38,10 @@ function randomEl(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   var randomElement = array[randomIndex]
   return randomElement
-  
+
 };
 function generatePassword() {
- 
+
   var newPassword = []
   var possibleCharacters = []
   var guaranteedCharacters = []
@@ -66,7 +69,7 @@ function generatePassword() {
     guaranteedCharacters.push(randomEl(num))
   };
 
-  
+
   for (var i = 0; i < passwordOptions.pwdLength; i++) {
     var possibleCharacter = randomEl(possibleCharacters)
     newPassword.push(possibleCharacter)
