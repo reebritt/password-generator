@@ -27,11 +27,11 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 
 4.
- <img src="./Assets/Prompt1">
-<img src="./Assets/Prompt2">
-<img src="./Assets/Prompt3">
-<img src="./Assets/Prompt4">
-<img src="./Assets/Prompt5">
-<img src=".Assets/password">
+ <img src="./Assets/Prompt1.png">
+<img src="./Assets/Prompt2.png">
+<img src="./Assets/Prompt3.png">
+<img src="./Assets/Prompt4.png">
+<img src="./Assets/Prompt5.png">
+<img src=".Assets/password.png">
 
 file:///Users/shereebritt/Desktop/Homework/homework3/password-generator/index.html
